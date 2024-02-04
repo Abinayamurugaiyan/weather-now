@@ -5,11 +5,10 @@ body {
 
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100%;
   width: 100vw;
-  overflow-x: hidden;
-  background-color: #4a027c;
+  overflow: hidden;
 }
 :root {
-  background-color: #4a027c;
+  background-image: url(assets/blue-sky-with-cloud-closeup.jpg);
 }
