@@ -1,16 +1,17 @@
 <main *ngIf="weatherMain">
   <span>{{ city }}</span>
-  <span>{{ weatherMain?.main?.temp }}&deg;</span>
-  <span>{{ weatherMain?.weather[0]?.description }}</span>
+  <span>{{ weatherMain?.current?.temp }}&deg;</span>
+  <span>{{ weatherMain?.current?.weather[0]?.description }}</span>
   <span
-    >H:{{ weatherMain?.main?.temp_max }}&deg; L:{{
-      weatherMain?.main?.temp_min
+    >H:{{ weatherMain?.daily[0]?.temp.max }}&deg; L:{{
+      weatherMain?.daily[0]?.temp.min
     }}&deg;
   </span>
   <!-- <ng-container class="card-container">
     
   </ng-container> -->
 </main>
+<section>
 <div class="card-container">
   <div class="card" *ngFor="let unit of weatherUnits">
     <div class="card-content">
@@ -21,3 +22,16 @@
     </div>
   </div>
 </div>
+
+<div class="forecast-container">
+  <h3>7-DAY FORECAST</h3>
+  <div class="forecast-card" *ngFor="let unit of weatherMain?.daily">
+    <div class="forecast-content">
+      <p>{{unit.dt | slice:0:3 }}</p>
+      <img class="forecast-weather-icon" [src]="'https://openweathermap.org/img/wn/' + unit.weather[0].icon + '.png'"/>
+      <p class="temp-max">{{ unit.temp.max }}&deg;</p>
+      <p class="temp-min">{{ unit.temp.min }}&deg;</p>
+    </div>
+  </div>
+</div>
+</section>
